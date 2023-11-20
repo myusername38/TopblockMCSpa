@@ -1,0 +1,33 @@
+<table class="table">
+  <thead>
+    <tr>
+      <th>Item Type</th>
+      <th *ngIf="!isSmall">Created</th>
+      <th *ngIf="!isSmall">Creator</th>
+      <th>Used On</th>
+      <th>Recieved</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let consumable of shownConsumables">
+      <td>{{ consumable.itemType }}</td>
+      <td *ngIf="!isSmall">{{ consumable.created | date : "M.d.yy" }}</td>
+      <td *ngIf="!isSmall">{{ consumable.itemCreator }}</td>
+      <td *ngIf="consumable.used > 0">
+        {{ consumable.used | date : "M.d.yy" }}
+      </td>
+      <td *ngIf="consumable.used < 0">Not Used</td>
+      <td>
+        {{ consumable.givenToUUID === consumable.usedByUUID ? 'Yes' : 'No' }}
+      </td>
+    </tr>
+  </tbody>
+</table>
+<pagination
+  class="pagination-danger"
+  [(ngModel)]="pageIndex"
+  [totalItems]="consumables.length"
+  [itemsPerPage]="pageSize"
+  (pageChanged)="pageChanged($event)"
+>
+</pagination>

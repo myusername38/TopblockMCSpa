@@ -1,0 +1,18 @@
+@import '../../../assets/scss/vars.scss';
+
+.button-slider {
+  border: 1px solid #A3BCD845;
+  padding: 1px;
+  button {
+    width: 160px;
+    &.selected {
+      // TODO fix this
+    }
+  }
+  color: #00000080;
+}
+
+.star {
+  margin-left: 4px !important;
+  color: $red;
+}

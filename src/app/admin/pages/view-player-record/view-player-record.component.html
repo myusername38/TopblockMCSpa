@@ -1,0 +1,168 @@
+<div class="wrapper cols mlr-auto">
+  <div class="content-start mt-header pl-sm pr-sm cols">
+    <div
+      class="cols row-grid justify-content-center align-items-start text-center"
+      *ngIf="player"
+    >
+      <div
+        class="row align-items-center mt-sm p-sm flex-justify-start mb-0 w-100"
+      >
+        <div>
+          <button
+            class="btn btn-primary mr-1 ml-sm"
+            type="button"
+            (click)="return()"
+          >
+            Return
+          </button>
+        </div>
+
+        <div class="cols ml-sm flex-align-start">
+          <h1 class="text-white mt-xs mb-xs mr-sm">
+            {{ player.username }}
+          </h1>
+
+          <div class="mt-xs mb-xs row flex-align-center ml-0 mr-0">
+            <h4 class="mb-0">{{ player.uuid }}</h4>
+            <button
+              class="btn btn-primary btn-icon btn-round ml-xs"
+              tooltip="Copy Plyaer UUID"
+              type="button"
+              (click)="copyUUID()"
+            >
+              <i class="tim-icons icon-single-copy-04"> </i>
+            </button>
+            <button
+              class="btn btn-success btn-icon btn-round ml-xs"
+              type="button"
+              tooltip="Give Player Consumable"
+              (click)="generateConsumableForm()"
+            >
+              <i class="tim-icons icon-money-coins"> </i>
+            </button>
+            <button
+              class="btn btn-danger btn-icon btn-round ml-xs"
+              type="button"
+              tooltip="Show Player Actions"
+              (click)="punishmentModal.show()"
+            >
+              <i class="tim-icons icon-alert-circle-exc"> </i>
+            </button>
+          </div>
+        </div>
+      </div>
+      <div
+        class="rows align-items-center mb-sm p-0 pl-sm flex-justify-space-between text-white w-100"
+      >
+        <p class="mt-xs mb-xs">
+          Total Votes - {{ player.totalVotes }} || Vote Streak -
+          {{ player.currentStreak }} || Highest Streak -
+          {{ player.highestVoteStreak }} || Rc - {{ player.referralCode }}
+        </p>
+        <div class="btn-group dropdown" dropdown>
+          <button
+            aria-expanded="false"
+            aria-haspopup="true"
+            class="btn btn-primary dropdown-toggle dropdown-toggle select-item row flex-align-start flex-justify-start button-text"
+            data-toggle="dropdown"
+            dropdownToggle
+            id="dropdownMenuLink2"
+            [class.text-white]="hasValue"
+            type="button"
+          >
+            <i class="tim-icons ml-xs button-icon" [ngClass]="icon"> </i>
+            {{ selectedItem }}
+          </button>
+          <div
+            class="dropdown-menu"
+            *dropdownMenu
+            aria-labelledby="dropdownMenuLink2"
+          >
+            <a
+              class="dropdown-item"
+              (click)="consumablesType = option.slug"
+              *ngFor="let option of selectItems"
+            >
+              {{ option.name }}
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <app-consumables-given-chart
+      *ngIf="consumablesType === 'given'"
+      [playerUUID]="playerUUID"
+      [isSmall]="isSmall"
+    ></app-consumables-given-chart>
+    <app-consumables-reedemed-chart
+      *ngIf="consumablesType === 'redeemed'"
+      [playerUUID]="playerUUID"
+      [isSmall]="isSmall"
+    ></app-consumables-reedemed-chart>
+    <app-player-votes-chart
+      *ngIf="consumablesType === 'votes'"
+      [playerUUID]="playerUUID"
+      [isSmall]="isSmall"
+    ></app-player-votes-chart>
+  </div>
+</div>
+
+<div
+  aria-hidden="true"
+  aria-labelledby="Player Punishment modal"
+  bsModal
+  class="modal fade modal-black"
+  #punishmentModal="bs-modal"
+  id="punishmentModal"
+  role="dialog"
+  tabindex="-1"
+>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header justify-content-center">
+        <button
+          aria-hidden="true"
+          class="close"
+          data-dismiss="modal"
+          (click)="punishmentModal.hide()"
+          type="button"
+        >
+          <i class="tim-icons icon-simple-remove text-white"> </i>
+        </button>
+        <div class="text-muted text-center ml-auto mr-auto">
+          <h3 class="mb-0">Punishments</h3>
+        </div>
+      </div>
+      <div class="cols flex-center">
+        <button
+          class="btn my-4 btn-primary"
+          type="button"
+          (click)="generatePlayerActionForm(); punishmentModal.hide()"
+        >
+          Actions
+        </button>
+        <button
+          class="btn my-4 btn-info"
+          type="button"
+          (click)="generatePlayerRankForm(); punishmentModal.hide()"
+        >
+          Player Rank
+        </button>
+        <button
+          class="btn my-4 btn-warning"
+          type="button"
+          (click)="generatePlayerTempPunishmentForm(); punishmentModal.hide()"
+        >
+          Temporary
+        </button>
+        <button
+          class="btn my-4 btn-danger"
+          type="button"
+          (click)="generatePlayerPunishmentForm(); punishmentModal.hide()"
+        >
+          Punishments
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

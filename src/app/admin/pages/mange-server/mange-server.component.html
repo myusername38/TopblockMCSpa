@@ -1,0 +1,65 @@
+<div class="wrapper mlr-auto">
+  <div class="content-start mt-header pl-sm pr-sm">
+    <div
+      class="row row-grid justify-content-center align-items-start text-center"
+    >
+      <div class="row align-items-center mt-0 pl-sm pr-sm flex-center">
+        <button
+          class="btn btn-primary mr-1 ml-sm"
+          type="button"
+          (click)="return()"
+        >
+          Return
+        </button>
+        <h1 class="text-white mt-xs mb-xs ml-sm mr-sm">Mangage Server</h1>
+        <button
+          class="btn btn-danger btn-icon btn-round ml-xs"
+          type="button"
+          tooltip="Give Player Consumable"
+        >
+          <i class="tim-icons icon-button-power"> </i>
+        </button>
+      </div>
+    </div>
+  </div>
+  <div class="w-100 p-sm cols">
+    <ng-terminal
+      #term
+      [dataSource]="writeSubject"
+      (data)="onKeyInput($event)"
+      class="ng-terminal"
+    ></ng-terminal>
+    <form [formGroup]="commandPrompt" class="w-100 input-line rows form">
+      <div class="rows w-100">
+        <div
+          class="input-group input-row"
+          [ngClass]="{
+          'input-group-focus': focus1 === true,
+        }"
+        >
+          <div class="input-group-prepend">
+            <div class="input-group-text">
+              <i class="tim-icons icon-double-right"> </i>
+            </div>
+          </div>
+          <input
+            formControlName="command"
+            class="form-control"
+            placeholder="Command..."
+            type="text"
+            (focus)="focus1 = true"
+            (blur)="focus1 = false"
+          />
+        </div>
+      </div>
+
+      <button
+        class="btn btn-primary mt-0 mb-0 submit-button"
+        type="submit"
+        (click)="submit()"
+      >
+        Send
+      </button>
+    </form>
+  </div>
+</div>

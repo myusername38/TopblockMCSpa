@@ -1,0 +1,9 @@
+<div
+  markdown
+  *ngIf="markdownLocation"
+  class="markdown-page"
+  [src]="markdownLocation"
+  [srcRelativeLink]="true"
+  (load)="onLoad($event)"
+  (error)="onError($event)"
+></div>

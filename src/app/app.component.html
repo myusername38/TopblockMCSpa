@@ -1,0 +1,193 @@
+<ngx-spinner
+  bdColor="rgba(0, 0, 0, 0.8)"
+  size="medium"
+  color="#fff"
+  type="ball-8bits"
+  [fullScreen]="true"
+  ><p style="color: white">{{ loadingMessage }}</p></ngx-spinner
+>
+<router-outlet></router-outlet>
+
+<div class="notification-box pl-sm pr-sm w-100" *ngIf="snackbarEvent">
+  <alert class="alert-with-icon" [type]="snackbarType">
+    <span class="tim-icons" [ngClass]="snackbarIcon" data-notify="icon"> </span>
+    <span>
+      <b> {{ snackbarMessage }} </b> {{ snackbarEvent.message }}
+    </span>
+    <button
+      type="button"
+      aria-label="Close"
+      class="close ng-star-inserted"
+      (click)="closeSnackbar()"
+    >
+      <span aria-hidden="true">×</span><span class="sr-only">Close</span>
+    </button>
+  </alert>
+</div>
+
+<div
+  aria-hidden="true"
+  aria-labelledby="Login Model"
+  bsModal
+  class="modal fade modal-black"
+  #dialogModal="bs-modal"
+  id="dialogModal"
+  role="dialog"
+  tabindex="-1"
+>
+  <div class="modal-dialog" *ngIf="formData">
+    <div class="modal-content">
+      <div class="modal-header justify-content-center">
+        <button
+          aria-hidden="true"
+          class="close"
+          data-dismiss="modal"
+          (click)="dialogModal.hide()"
+          type="button"
+        >
+          <i class="tim-icons icon-simple-remove text-white"> </i>
+        </button>
+        <div class="text-muted text-center ml-auto mr-auto">
+          <h3 class="mb-0">{{ formData.title }}</h3>
+        </div>
+      </div>
+      <div class="modal-body">
+        <form role="form" [formGroup]="form">
+          <div
+            class="w-100 input-container"
+            fxLayout="row"
+            fxLayoutAlign="start center"
+            *ngFor="let item of formData.formItems"
+          >
+            <ng-container [ngSwitch]="item.type">
+              <app-form-dual-selector
+                *ngSwitchCase="addFormItem.boolean"
+                class="dual"
+                [formControlName]="item.slug"
+                [fieldTitle]="item.name"
+                [trueLabel]="item.trueLabel"
+                [falseLabel]="item.falseLabel"
+              >
+              </app-form-dual-selector>
+              <app-form-dropdown
+                [name]="item.name"
+                [formControlName]="item.slug"
+                [placeholder]="item.placeholder"
+                [options]="item.selectItems"
+                *ngSwitchCase="addFormItem.select"
+              ></app-form-dropdown>
+              <div class="form-check mt-3" *ngSwitchCase="addFormItem.checkbox">
+                <label class="form-check-label">
+                  <input
+                    checked="checked"
+                    class="form-check-input"
+                    type="checkbox"
+                    formControlName="{{ item.slug }}"
+                  />
+
+                  <span class="form-check-sign"> </span> {{ item.name }}
+                </label>
+              </div>
+              <div class="form-group" *ngSwitchDefault>
+                <div
+                  class="input-group input-group-alternative"
+                  [ngClass]="{
+                    'input-group-focus': item.focused === true,
+                    'form-control-has-error': controlHasError(item.slug)
+                  }"
+                >
+                  <div class="input-group-prepend">
+                    <span
+                      class="input-group-text"
+                      [ngClass]="{
+                        'form-control-has-error': controlHasError(item.slug)
+                      }"
+                    >
+                      <i class="tim-icons" [ngClass]="item.icon"> </i>
+                    </span>
+                  </div>
+                  <input
+                    formControlName="{{ item.slug }}"
+                    class="form-control"
+                    placeholder="{{ item.placeholder }}"
+                    type="{{ item.type }}"
+                    (focus)="item.focused = true"
+                    (blur)="item.focused = false"
+                    [ngClass]="{
+                      'form-control-has-error': controlHasError(item.slug)
+                    }"
+                  />
+                </div>
+              </div>
+            </ng-container>
+          </div>
+          <button
+            class="btn btn-link btn-primary mr-1"
+            *ngIf="formData.title === 'Login'"
+            (click)="forgotPassword()"
+          >
+            Forgot Password?
+          </button>
+
+          <div class="text-center">
+            <button
+              class="btn btn-primary my-4"
+              type="button"
+              (click)="submit()"
+            >
+              {{ formData.submitText }}
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div
+  aria-hidden="true"
+  aria-labelledby="Login Model"
+  bsModal
+  class="modal fade modal-black"
+  #confirmationModal="bs-modal"
+  id="confirmationModal"
+  role="dialog"
+  tabindex="-1"
+>
+  <div class="modal-dialog" *ngIf="confirmationData">
+    <div class="modal-content">
+      <div class="modal-header justify-content-center">
+        <button
+          aria-hidden="true"
+          class="close"
+          data-dismiss="modal"
+          (click)="confirmationModal.hide()"
+          type="button"
+        >
+          <i class="tim-icons icon-simple-remove text-white"> </i>
+        </button>
+        <div class="text-muted text-center ml-auto mr-auto">
+          <h3 class="mb-0">{{ confirmationData.title }}</h3>
+          <p class="mb-0">{{ confirmationData.subtitle }}</p>
+        </div>
+      </div>
+      <div class="rows flex-center">
+        <button
+          class="btn mr-sm"
+          type="button"
+          (click)="confirmationModal.hide()"
+        >
+          {{ confirmationData.cancelText }}
+        </button>
+        <button
+          class="btn my-4"
+          type="button"
+          [ngClass]="confirmationData.successButtonType"
+          (click)="confirmDialog()"
+        >
+          {{ confirmationData.successText }}
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

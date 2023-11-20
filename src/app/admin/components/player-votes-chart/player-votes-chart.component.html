@@ -1,0 +1,29 @@
+<table class="table">
+    <thead>
+      <tr>
+        <th>Date</th>
+        <th>Votes</th>
+        <th>Voucher</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let day of voteHistoryDays">
+        <td>{{ day.date | date : "M.d.yy" }}</td>
+        <td>
+          {{ day.votes }}
+        </td>
+        <td>
+            {{ day.voteVoucherId ? 'Yes' : 'No' }}
+          </td>
+      </tr>
+    </tbody>
+  </table>
+  <pagination
+    class="pagination-danger"
+    [(ngModel)]="pageIndex"
+    [totalItems]="voteHistoryDays.length"
+    [itemsPerPage]="pageSize"
+    (pageChanged)="pageChanged($event)"
+  >
+  </pagination>
+  

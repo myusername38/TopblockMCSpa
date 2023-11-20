@@ -1,0 +1,25 @@
+<div class="main mb-sm cols flex-align-start flex-justify start" >
+    <div class="mb-xs rows flex-align-start flex-justify start">
+      <h2 class="mb-0 mt-0">{{ fieldTitle }}</h2>
+      <h2 class="body-text star mb-0 mt-0" *ngIf="required"></h2>
+    </div>
+    <div class="button-slider rounded-box row flex-center">
+      <button
+        mat-button
+        class="rounded-box button-padding"
+        [class.selected]="value"
+        (click)="onTrue()"
+      >
+        <p class="mlr-auto mt-xs mb-xs">{{ trueLabel }}</p>
+      </button>
+      <button
+        mat-button
+        class="rounded-box button-padding"
+        [class.selected]="value === false"
+        (click)="onFalse()"
+      >
+        <p class="mlr-auto mt-xs mb-xs">{{ falseLabel }}</p>
+      </button>
+    </div>
+  </div>
+  

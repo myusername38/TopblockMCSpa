@@ -1,0 +1,18 @@
+
+.rank-image {
+    width: 300px !important;
+}
+
+.rank-subscription {
+    width: 150px;
+}
+
+.text-margin-bottom {
+    margin-bottom: 100px;
+    @media screen and (max-width: 768px) {
+        margin-bottom: 32px;
+    }
+    @media screen and (max-width: 576px) {
+        margin-bottom: 0px;
+    }
+}

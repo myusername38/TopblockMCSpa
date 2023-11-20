@@ -1,0 +1,13 @@
+@import '../../assets/scss/vars.scss'; 
+
+.image {
+    z-index: -1;
+}
+
+.admin-outter {
+    overflow-y: hidden;
+}
+
+.content {
+    min-height: $minHeight;
+}

@@ -1,0 +1,18 @@
+<div class="btn-group dropdown w-100" dropdown>
+  <button
+    aria-expanded="false"
+    aria-haspopup="true"
+    class="btn btn-primary dropdown-toggle dropdown-toggle select-item row flex-align-start flex-justify-start button-text"
+    data-toggle="dropdown"
+    dropdownToggle
+    id="dropdownMenuLink"
+    [class.text-white]="hasValue"
+    type="button"
+  >
+    <i class="tim-icons ml-xs button-icon" [ngClass]="icon"> </i>
+        {{ selectDisplay }}
+  </button>
+  <div class="dropdown-menu" *dropdownMenu aria-labelledby="dropdownMenuLink">
+    <a class="dropdown-item" (click)="writeValue(option.slug)"  *ngFor="let option of selectOptions"> {{ option.name }} </a>
+  </div>
+</div>

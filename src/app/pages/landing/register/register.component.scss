@@ -1,0 +1,21 @@
+.card-title-left-margin {
+    margin-left: 0px !important;
+}
+
+:host ::ng-deep {
+    svg {
+        left: -45px;
+    }
+}
+
+.submit-button {
+    &.invalid {
+        cursor: not-allowed;
+        background: none !important;
+        background: none !important;
+        color: grey !important;
+        transition: none !important;
+        box-shadow: none !important;
+        transform: translate(0px, 0px);
+    }
+}

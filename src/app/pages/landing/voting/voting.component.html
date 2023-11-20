@@ -1,0 +1,76 @@
+<app-navbar></app-navbar>
+<div class="wrapper">
+  <div class="">
+    <img class="dots" src="assets/img/dots.png" />
+
+    <img class="path" src="assets/img/path4.png" />
+
+    <div class="container align-items-center init-top-padding">
+      <div class="row">
+        <div class="col-lg-6 col-md-6">
+          <h1 class="profile-title text-left">Voting</h1>
+          <h5 class="text-on-back">01</h5>
+          <p class="profile-description">
+            Cast your vote for TopblockMc's skyblock server and wield the power
+            to summon a bustling battalion of players to our pixelated domain.
+            Your votes aren't just tickets to greatness – they're keys to unlock
+            epic in-game treasures that'll make your inventory shine. But hold
+            onto your enchanted helmets, for those who honor us with their votes
+            day after day shall ascend the ranks, unlocking access to royal
+            rewards beyond your wildest blocky dreams! It's time to forge your
+            legacy in the land of TopblockMc – one vote at a time. ⚔️👑🗳️
+          </p>
+        </div>
+        <div class="col-lg-4 col-md-6 ml-auto mr-auto links">
+          <div class="card card-coin card-plain">
+            <h2 class="mlr-auto mt-sm"><span> Vote Links</span></h2>
+            <button
+              *ngFor="let link of voteLinks"
+              placement="top"
+              tooltip="Vote on {{ link.name }}"
+              class="w-100 vote-box"
+              (click)="onNavigate(link.url)"
+            >
+              <h4 class="mt-xs mb-xs ml-xs">{{ link.name }}</h4>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="container">
+      <div class="row justify-content-between">
+        <div class="col-md-6">
+          <div class="row justify-content-between align-items-center" *ngFor="let item of caroselItems">
+            <img
+              alt="TopblockMc's {{ item.title }}"
+              class="d-block mt-md mb-md"
+              src="{{ item.url }}"
+            />
+
+            <div class="carousel-caption d-none d-md-block carosel-margin-top">
+              <h5>{{ item.title }}</h5>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-5">
+          <h1 class="profile-title text-left">Rewards</h1>
+          <h5 class="text-on-back">02</h5>
+          <p class="profile-description text-left">
+            Its good to be rewarded. TopblockMc rewards you when you help grow
+            the TopblockMc community. Keep voting daily to get server ranks and
+            get better rewards!
+          </p>
+          <div class="btn-wrapper pt-3">
+            <button class="btn btn-simple btn-danger mr-1" (click)="copyIp()">
+              <i class="tim-icons icon-book-bookmark"> </i> Copy IP
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<app-footer></app-footer>

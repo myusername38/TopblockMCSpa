@@ -1,0 +1,18 @@
+@import "../../../assets/scss/vars.scss";
+
+.select-item {
+  border: 1px solid $border-color !important;
+  background: $background-solid !important;
+  &:focus {
+    background: $background-solid !important;
+    border: 1px solid $pink !important;
+  }
+}
+
+.button-icon {
+    margin-right: 18px;
+}
+
+.button-text {
+    color: $grey-text;
+}

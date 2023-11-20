@@ -1,0 +1,43 @@
+<table class="table">
+  <thead>
+    <tr>
+      <th>Item Type</th>
+      <th *ngIf="!isSmall">Created</th>
+      <th *ngIf="!isSmall">Creator</th>
+      <th>Cached</th>
+      <th>Used On</th>
+      <th>Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let consumable of shownConsumables">
+      <td>{{ consumable.itemType }}</td>
+      <td *ngIf="!isSmall">{{ consumable.created | date : "M.d.yy" }}</td>
+      <td *ngIf="!isSmall">{{ consumable.itemCreator }}</td>
+      <td class="capitalize">{{ consumable.cached ? "Yes" : "No" }}</td>
+      <td *ngIf="consumable.used > 0">
+        {{ consumable.used | date : "M.d.yy" }}
+      </td>
+      <td *ngIf="consumable.used < 0">Not Used</td>
+      <td>
+        <button
+          type="button"
+          rel="tooltip"
+          class="btn btn-warn btn-sm btn-icon"
+          *ngIf="consumable.used < 0"
+          (click)="deleteConsumable(consumable)"
+        >
+          <i class="tim-icons icon-single-02"></i>
+        </button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<pagination
+  class="pagination-danger"
+  [(ngModel)]="pageIndex"
+  [totalItems]="consumables.length"
+  [itemsPerPage]="pageSize"
+  (pageChanged)="pageChanged($event)"
+>
+</pagination>

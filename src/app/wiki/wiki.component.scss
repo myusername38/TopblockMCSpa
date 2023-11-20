@@ -1,0 +1,74 @@
+@import "../../assets/scss/vars.scss";
+
+.wiki-layout {
+  display: grid;
+  grid-template-columns: 200px 1fr; /* Two columns, first is 200px wide, second takes the remaining space */
+  @media screen and (max-width: 991px) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.wrapper {
+  margin-top: $navbar-height;
+  min-height: calc(#{$minHeight} - #{ $navbar-height });
+  max-width: 1300px;
+}
+
+.nav-buttons {
+  background-color: $background-solid;
+  border-radius: 8px;
+  z-index: 99;
+}
+
+.nav-buttons-container {
+  background-color: $background-solid;
+  border-radius: 8px;
+  z-index: 99;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-items: center;
+  .nav-buttons {
+    display: flex;
+    flex-direction: column;
+    @media screen and (max-width: 991px) {
+      width: auto;
+      flex-direction: row;
+      flex-flow: row wrap;
+      justify-content: center;
+    }
+  }
+  @media screen and (max-width: 991px) {
+    margin-bottom: 16px;
+  }
+}
+
+.content {
+  padding-left: 32px;
+  @media screen and (max-width: 991px) {
+    padding-left: 0px;
+  }
+}
+
+.nav-button {
+  width: 100%;
+  border-radius: 8px;
+  background-color: $background-solid;
+  border: none; 
+  outline: none;
+  @media screen and (max-width: 991px) {
+    width: auto;
+    margin-left: 8px; 
+    margin-right: 8px;
+  }
+  &.active {
+    background-color: $blue;
+  }
+  &:hover {
+    background-color: $blue;
+  }
+}
+
+.icon {
+  color: white;
+}

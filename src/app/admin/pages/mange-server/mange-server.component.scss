@@ -1,0 +1,72 @@
+@import '../../../../assets/scss/vars.scss';
+
+$terminal-inner-height: calc(#{$minHeight} - #{ $navbar-height } - 200px - 16px);
+$terminal-max-width: calc(100vw - 64px - 16px);
+$inner-max-width: calc(100vw - 64px - 32px);
+
+.input-row {
+    background: $background-solid
+}
+
+.submit-button {
+    margin-left: -8px;
+    margin-right: 16px;
+    height: 40px;
+}
+
+.form {
+    margin-top: -35px;
+}
+
+.wrapper {
+    height: calc(#{$minHeight} - #{ $navbar-height });
+}
+
+.terminal {
+    height: calc(#{$minHeight} - #{ $navbar-height } - 200px);
+}
+
+:host ::ng-deep .resize-box {
+    height: calc(#{$minHeight} - #{ $navbar-height } - 200px) !important;
+    width: $terminal-max-width !important;
+    overflow-x: hidden;
+    .terminal-outer {
+        overflow-x: hidden;
+        width: $terminal-max-width !important;
+        .terminal {
+            overflow-x: hidden;
+            height: $terminal-inner-height;
+            width: $terminal-max-width !important;
+            .xterm-viewport {
+                overflow-x: hidden;
+                height: $terminal-inner-height;
+                width: $terminal-max-width !important;
+            }
+            overflow-x: hidden;
+            .xterm-screen {
+                height: $terminal-inner-height !important;
+                width: $terminal-max-width !important;
+                overflow-x: hidden;
+                .xterm-helpers {
+                    overflow-x: hidden;
+                    width: $terminal-max-width !important;
+                    text-area {
+                        width: $terminal-max-width !important;
+                    }
+                }
+                display:block;
+                .xterm-rows {
+                    display:block;
+                    height: $terminal-inner-height !important;
+                 
+                    width: $terminal-max-width !important;
+                    overflow-x: hidden;
+                    div {
+                        overflow-x: hidden;
+                        width: $terminal-max-width !important;
+                    }
+                }
+            }
+        }
+    }
+}

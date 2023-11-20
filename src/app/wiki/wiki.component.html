@@ -1,0 +1,30 @@
+<app-navbar></app-navbar>
+<div class="wrapper mlr-auto">
+  <div class="w-100 wiki-layout p-sm">
+    <div>
+      <div class="cols p-xs nav-buttons-container cols flex-center">
+        <h4 class=""><span class="bold">TopblockMc•</span> Wiki</h4>
+        <div class="w-100 nav-buttons">
+          <button
+            class="button nav-button row flex-align-center flex-justify-start p-xs clickable ml-0 mb-xs"
+            [class.active]="wikiId === route.id"
+            *ngFor="let route of routes"
+            (click)="navigate(route.id)"
+          >
+            <i class="tim-icons icon mr-xs" [ngClass]="route.icon"> </i>
+            <p class="mt-0 mb-0 fw-500">{{ route.title }}</p>
+          </button>
+        </div>
+       
+      </div>
+    </div>
+
+    <div class="col content">
+      <app-wiki-content
+        [markdownLocation]="markdownLocation"
+        (error)="handleMarkdownError()"
+      ></app-wiki-content>
+    </div>
+  </div>
+</div>
+<app-footer></app-footer>

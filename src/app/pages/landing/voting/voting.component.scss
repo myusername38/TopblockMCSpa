@@ -1,0 +1,24 @@
+.init-top-padding {
+  padding-top: 125px !important;
+}
+
+.links {
+  z-index: 99;
+}
+
+.vote-box {
+  background: none; 
+  border: none;
+  &:hover {
+    background-color: #1f2251 !important;
+  }
+  cursor: pointer !important;
+}
+
+.carosel-margin-top {
+    margin-top: -60px; 
+    z-index: 99;
+    h5 {
+        margin-top: -140px;
+    }
+}

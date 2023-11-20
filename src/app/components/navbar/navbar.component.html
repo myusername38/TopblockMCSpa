@@ -1,0 +1,272 @@
+<div
+  class="navbar navbar-expand-lg fixed-top navbar-transparent"
+  color-on-scroll="100"
+  id="navbar-top"
+>
+  <div class="container">
+    <div class="navbar-translate">
+      <a
+        class="navbar-brand text-white clickable"
+        placement="bottom"
+        target="_blank"
+        (click)="home()"
+        tooltip="TopblockMc Home"
+      >
+        <span> TopblockMc• </span> Skyblock Server
+      </a>
+      <button
+        aria-controls="navigation-index"
+        aria-label="Toggle navigation"
+        class="navbar-toggler navbar-toggler"
+        [attr.aria-expanded]="!isCollapsed"
+        (click)="isCollapsed = !isCollapsed"
+        id="navigation"
+        type="button"
+      >
+        <span class="navbar-toggler-bar bar1"> </span>
+        <span class="navbar-toggler-bar bar2"> </span>
+        <span class="navbar-toggler-bar bar3"> </span>
+      </button>
+    </div>
+    <div
+      class="navbar-collapse justify-content-end"
+      [class.collapse]="isCollapsed"
+      id="navigation"
+    >
+      <div class="navbar-collapse-header">
+        <div class="row">
+          <div class="col-6 collapse-brand"><a> TopblockMc• </a></div>
+          <div class="col-6 collapse-close text-right">
+            <button
+              aria-controls="navigation-index"
+              aria-label="Toggle navigation"
+              class="navbar-toggler"
+              [attr.aria-expanded]="!isCollapsed"
+              (click)="isCollapsed = !isCollapsed"
+              id="navigation"
+              type="button"
+            >
+              <i class="tim-icons icon-simple-remove"> </i>
+            </button>
+          </div>
+        </div>
+      </div>
+      <ul class="navbar-nav">
+        <!-- 
+        <li class="nav-item p-0">
+          <a
+            class="nav-link"
+            href="https://twitter.com/CreativeTim"
+            placement="bottom"
+            target="_blank"
+            tooltip="Follow us on Twitter"
+          >
+            <i class="fab fa-twitter"> </i>
+            <p class="d-lg-none d-xl-none">Twitter</p>
+          </a>
+        </li>
+        <li class="nav-item p-0">
+          <a
+            class="nav-link"
+            href="https://www.facebook.com/CreativeTim"
+            placement="bottom"
+            target="_blank"
+            tooltip="Like us on Facebook"
+          >
+            <i class="fab fa-facebook-square"> </i>
+            <p class="d-lg-none d-xl-none">Facebook</p>
+          </a>
+        </li>
+         -->
+        <li class="nav-item p-0">
+          <a
+            class="nav-link"
+            href="https://discord.gg/s6ZzFfG6B3"
+            placement="bottom"
+            target="_blank"
+            tooltip="Join the discord"
+          >
+            <img class="discord-height" src="../../../assets/pictures/discord-mark-white.png">
+            <p class="d-lg-none d-xl-none">Discord</p>
+          </a>
+        </li>
+         
+        <li class="dropdown nav-item" dropdown>
+          <a
+            class="dropdown-toggle nav-link dropdown-toggle"
+            data-toggle="dropdown"
+            dropdownToggle
+            href="javascript:void(0)"
+          >
+            <i class="fa fa-cogs d-lg-none d-xl-none"> </i> Getting started
+          </a>
+          <div class="dropdown-menu dropdown-with-icons" *dropdownMenu>
+            <a
+              class="dropdown-item clickable"
+              (click)="login()"
+            >
+              <i class="tim-icons icon-paper"> </i> Login
+            </a>
+            <a class="dropdown-item clickable" (click)="register()">
+              <i class="tim-icons icon-bullet-list-67"> </i> Register
+            </a>
+            <a class="dropdown-item clickable" (click)="ranks()">
+              <i class="tim-icons icon-trophy"> </i> Ranks
+            </a>
+            <a class="dropdown-item clickable" (click)="crates()">
+              <i class="tim-icons icon-app"> </i> Crates
+            </a>
+            <a class="dropdown-item clickable" (click)="voting()">
+              <i class="tim-icons icon-pencil"> </i> Voting
+            </a>
+            <a class="dropdown-item clickable" (click)="wiki()">
+              <i class="tim-icons icon-book-bookmark"> </i> Wiki
+            </a>
+            <a class="dropdown-item clickable" (click)="store()">
+              <i class="tim-icons icon-image-02"> </i> Store
+            </a>
+            <a class="dropdown-item clickable" (click)="admin()" *ngIf="showAdmin">
+              <i class="tim-icons icon-settings"> </i> Admin
+            </a>
+            
+          </div>
+        </li>
+        <li class="nav-item pl-xs pr-xs">
+          <button
+            class="nav-link btn btn-default d-none d-lg-block"
+            placement="bottom"
+            tooltip="Copy server IP"
+            (click)="copyIp()"
+          >
+            <i class="tim-icons icon-cloud-download-93"> </i> Copy Sever IP!
+          </button>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+<!-- 
+<div
+  aria-hidden="true"
+  aria-labelledby="myModalLabel"
+  bsModal
+  class="modal fade modal-black"
+  #myModal2="bs-modal"
+  id="myModal2"
+  role="dialog"
+  tabindex="-1"
+>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header justify-content-center">
+        <button
+          aria-hidden="true"
+          class="close"
+          data-dismiss="modal"
+          (click)="myModal2.hide()"
+          type="button"
+        >
+          <i class="tim-icons icon-simple-remove text-white"> </i>
+        </button>
+        <div class="text-muted text-center ml-auto mr-auto">
+          <h3 class="mb-0">Sign in</h3>
+        </div>
+      </div>
+      <div class="modal-body">
+        <form role="form" *ngIf="loginForm" [formGroup]="loginForm">
+          <div class="form-group mb-3">
+            <div
+              class="input-group input-group-alternative"
+              [ngClass]="{
+                'input-group-focus': focus1 === true,
+                'form-control-has-error': emailError === true
+              }"
+            >
+              <div class="input-group-prepend">
+                <div
+                  class="input-group-text"
+                  [ngClass]="{ 'form-control-has-error': emailError === true }"
+                >
+                  <i class="tim-icons icon-email-85"> </i>
+                </div>
+              </div>
+              <input
+                formControlName="email"
+                class="form-control"
+                placeholder="Email"
+                type="email"
+                (focus)="focus1 = true"
+                (blur)="focus1 = false"
+                [ngClass]="{ 'form-control-has-error': emailError === true }"
+              />
+            </div>
+          </div>
+          <div class="form-group">
+            <div
+              class="input-group input-group-alternative"
+              [ngClass]="{
+                'input-group-focus': focus2 === true,
+                'form-control-has-error': passwordError === true
+              }"
+            >
+              <div class="input-group-prepend">
+                <span
+                  class="input-group-text"
+                  [ngClass]="{
+                    'form-control-has-error': passwordError === true
+                  }"
+                >
+                  <i class="tim-icons icon-key-25"> </i>
+                </span>
+              </div>
+              <input
+                formControlName="password"
+                class="form-control"
+                placeholder="Password"
+                type="password"
+                (focus)="focus2 = true"
+                (blur)="focus2 = false"
+                [ngClass]="{ 'form-control-has-error': passwordError === true }"
+              />
+            </div>
+          </div>
+          <div class="form-check mt-3">
+            <label class="form-check-label">
+              <input
+                checked="checked"
+                class="form-check-input"
+                type="checkbox"
+              />
+
+              <span class="form-check-sign"> </span> Remember me!
+            </label>
+          </div>
+          <div class="text-center">
+            <button
+              class="btn btn-primary my-4"
+              type="button"
+              (click)="onLogin()"
+            >
+              Sign in
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="alert-container">
+  <alert
+    class="alert-with-icon"
+    [type]="'success alert-with-icon'"
+    [dismissible]="true"
+  >
+    <span class="tim-icons icon-bell-55" data-notify="icon"> </span>
+    <span>
+      <b> Well done! - </b> This is a regular notification made with
+      ".alert-success"
+    </span>
+  </alert>
+</div>
+
+-->

@@ -1,0 +1,19 @@
+@import '../../../../assets/scss/vars.scss';
+
+$status-icon-size: 16px;
+.wrapper {
+    max-width: 1300px;;
+}
+
+.status-icon {
+    height: $status-icon-size;
+    width: $status-icon-size;
+    border-radius: calc(#{$status-icon-size} / 2);
+    &.online {
+      background-color: $green;
+    }
+    &.offline {
+      background-color: $red;
+    }
+  }
+  

@@ -1,0 +1,30 @@
+<app-navbar></app-navbar>
+<div class="wrapper">
+  <div class="page-header header-filter">
+    <div class="squares square1"></div>
+    <div class="squares square2"></div>
+    <div class="squares square3"></div>
+    <div class="squares square4"></div>
+    <div class="squares square5"></div>
+    <div class="squares square6"></div>
+    <div class="squares square7"></div>
+    <div class="container mt-sm cols flex-center">
+      <img class="TopblockMc-logo" alt="TopblockMc Logo" src="../../../assets/pictures/topblock_logo.png" />
+      <div class="col mlr-auto">
+        <div class="ip-box row mlr-auto">
+          <p class="mt-xs mb-xs ip-text mlr-auto">play.<span class="main-text">TopblockMc</span>.com</p>
+          <button tooltip="Copy IP" class="copy-ip-button row flex-center mr-0 clickable" (click)="copyIp()">
+            <p class="copy-ip-text mt-0 mb-0 ml-xs mr-xs">Copy IP</p>
+          </button>
+        </div>
+        <div class="row-center">
+          <div class="status-icon" [ngClass]="online ? 'online' : 'offline'"></div>
+          <p class="mt-sm mb-sm ml-sm players-online">{{ playersOnline }} Players Online</p>
+        </div>
+      </div>
+    
+    </div>
+  </div>
+</div>
+<app-footer></app-footer>
+

@@ -1,0 +1,84 @@
+@import "../../../../assets/scss/vars.scss";
+
+$status-icon-size: 16px;
+$copy-ip-button-height: 50px;
+
+.wrapper {
+  min-height: $minHeight;
+}
+
+.status-icon {
+  height: $status-icon-size;
+  width: $status-icon-size;
+  border-radius: calc(#{$status-icon-size} / 2);
+  &.online {
+    background-color: $green;
+  }
+  &.offline {
+    background-color: $red;
+  }
+}
+
+.players-online {
+    font-size: 2rem;
+    font-weight: 600;
+    @media screen and (max-width: $screen-small) {
+        font-size: 1.5rem;
+    }
+}
+
+.row-center {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.flex-center {
+  justify-content: center;
+  align-items: center;
+}
+
+.ip-box {
+    background-color: $background-solid;
+    font-weight: 500; 
+    border-radius: 16px; 
+    max-width: 400px;
+  
+    height: $copy-ip-button-height;
+    .ip-text {
+        font-size: 24px;
+        @media screen and (max-width: $screen-small) {
+            font-size: 16px;
+            line-height: 32px;
+        }
+        font-weight: 600;
+        .main-text {
+            color: $blue;
+        }
+    }
+    .copy-ip-button {
+        cursor: pointer;
+        height: $copy-ip-button-height;
+        border: 0px;
+        border-radius: 16px;
+        background-color: $blue;
+        .copy-ip-text {
+            font-size: 20px;
+            font-weight: 600;
+            @media screen and (max-width: $screen-small) {
+                font-size: 16px;
+            }
+        }
+    }
+}
+
+.TopblockMc-logo {
+    @media screen and (max-width: $screen-small) {
+        margin-top: 32px;
+    }
+    margin-top: 64px;
+    max-height: 70vh;
+    margin-bottom: 16px;
+    width: auto;
+}

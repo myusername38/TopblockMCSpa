@@ -1,0 +1,50 @@
+<footer class="footer">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-3 cols flex-center">
+        <img
+          class="logo"
+          alt="TopblockMc small logo"
+          src="./assets/pictures/topblock_logo.png"
+        />
+        <h1 class="title text-center mlr-auto">TopblockMc•</h1>
+      </div>
+      <div class="col-md-3">
+        <ul class="nav">
+          <li class="nav-item">
+            <a class="nav-link" [routerLink]="['/home']"> Home </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" [routerLink]="['/voting']"> Voting </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" [routerLink]="['/ranks']"> Ranks </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" [routerLink]="['/crates']"> Crates </a>
+          </li>
+        </ul>
+      </div>
+      <div class="col-md-3">
+        <ul class="nav">
+          <li class="nav-item">
+            <a class="nav-link" [routerLink]="['/register']"> Register </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" [routerLink]="['/wiki/voting']"> Wiki </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" (click)="staffApplication()"> Staff Application </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" (click)="influencerApplication()"> Influencer Application </a>
+          </li>
+          
+        </ul>
+      </div>
+      <div class="col-md-3 cols flex-center">
+        <h3 class="title text-center">play.TopblockMc.net</h3>
+      </div>
+    </div>
+  </div>
+</footer>

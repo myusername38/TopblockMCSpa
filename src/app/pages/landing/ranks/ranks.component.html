@@ -1,0 +1,72 @@
+<app-navbar></app-navbar>
+<div class="wrapper">
+  <section class="section section-lg section-coins mt-md">
+    <img class="shapes triangle" src="assets/img/triunghiuri.png" />
+    <img class="path" src="assets/img/path3.png" />
+
+    <div class="container">
+      <div class="row text-margin-bottom">
+        <div class="col-md-6">
+          <hr class="line-info" />
+
+          <h1 class="mb-sm">
+            Ranks to say
+            <span class="text-info"> Thank You </span>
+            for
+            <span class="text-info"> supporting </span> TopblockMc
+          </h1>
+        </div>
+        <div class="col-md-6">
+          <div
+            class="w-100 rows flex-center clickable"
+            tooltip="Purchase base rank upgrade"
+            (click)="upgradeBaseRank()"
+          >
+
+            <h2 class="text-success mt-xs mb-xs bold">Purchase Rank</h2>
+          </div>
+        </div>
+      </div>
+      <div class="row flex-align-start flex-justify-center">
+        <div class="col-md-4 mb-md" *ngFor="let rank of ranks">
+          <div class="card card-coin card-plain">
+            <div class="card-header">
+              <div class="rank-background">
+                <img
+                  class="img-center img-fluid rank-image"
+                  src="{{ rank.image }}"
+                />
+              </div>
+            </div>
+
+            <div class="card-body">
+              <div class="row">
+                <div class="col-md-12 text-center">
+                  <h3 class="text-uppercase">{{ rank.title }}</h3>
+                  <span> Perks </span>
+                  <hr class="line-primary" />
+                </div>
+              </div>
+              <div class="row">
+                <ul class="list-group">
+                  <li
+                    class="list-group-item"
+                    *ngFor="let feature of rank.features"
+                  >
+                    {{ feature }}
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <div class="card-footer text-center">
+              <h4>
+                Price: <span class="text-info">{{ rank.price }}</span>
+              </h4>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+<app-footer></app-footer>

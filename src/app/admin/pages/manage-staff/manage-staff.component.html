@@ -1,0 +1,45 @@
+
+  <div class="wrapper mlr-auto">
+   
+
+    <div class="content-start mt-header pl-sm pr-sm">
+      <div
+        class="row row-grid justify-content-center align-items-start text-center"
+      >
+        <div class="row align-items-center mt-sm p-sm flex-center">
+          <h1 class="text-white mt-sm mb-sm ml-sm mr-sm">TopblockMc Staff</h1>
+          <button class="btn btn-primary mr-1" type="button" (click)="addStaffMember()">Add Staff</button>
+          <button class="btn btn-primary mr-1 ml-sm" type="button" (click)="home()">Home</button>
+        </div>
+      </div>
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Staff Position</th>
+            <th *ngIf="!isSmall">Server Rank</th>
+            <th *ngIf="!isSmall">Last Active</th>
+            <th class="text-right">Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let player of players">
+            <td>{{ player.username }}</td>
+            <td class="capitalize">{{ player.staffRank }}</td>
+            <td class="capitalize" *ngIf="!isSmall">{{ player.rank }}</td>
+            <td *ngIf="!isSmall">{{ player.lastActive | date : "M.d.yy" }}</td>
+            <td class="td-actions text-right">
+              <button
+                type="button"
+                rel="tooltip"
+                class="btn btn-info btn-sm btn-icon"
+                (click)="updateStaffRank(player)"
+              >
+                <i class="tim-icons icon-single-02"></i>
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
